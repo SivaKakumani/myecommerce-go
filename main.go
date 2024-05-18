@@ -15,6 +15,7 @@ import (
 
 var db *sql.DB
 
+// To convert the JSON data into form dat
 type User struct {
 	Name  string `json:"name"`
 	Email string `json:"email"`
