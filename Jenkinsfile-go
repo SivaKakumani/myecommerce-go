@@ -26,7 +26,7 @@ pipeline {
                     // sh 'docker rm myecommerce-ui || true'
 
                     // Run the Docker container
-                    powershell 'docker run -d -p 8001:8001 --name myecommerce-go myecommerce-go'
+                    powershell '$ docker run -d --network python-mysql-network -p 8082:8082 --name myecommerce-go myecommerce-go'
                 }
             }
         }
