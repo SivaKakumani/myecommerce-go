@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-backend-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-backend
+  template:
+    metadata:
+      labels:
+        app: go-backend
+    spec:
+      containers:
+      - name: go-backend
+        image: go-backend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8082
+        env:
+        - name: DATABASE_URL
+          value: jdbc:mysql://127.0.0.1:3306/kvsp_paul
+        - name: DATABASE_USERNAME
+          value: root
+        - name: DATABASE_PASSWORD
+          value: your_password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: go-backend
+spec:
+  selector:
+    app: go-backend
+  ports:
+  - protocol: TCP
+    port: 8082
+    targetPort: 8082

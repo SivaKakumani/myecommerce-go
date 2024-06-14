@@ -23,7 +23,7 @@ type User struct {
 
 func main() {
 	var err error
-	db, err = sql.Open("mysql", "root:@tcp(127.0.0.1:3306)/kvsp_paul")
+	db, err = sql.Open("mysql", "root:your_password@tcp(127.0.0.1:3306)/kvsp_paul")
 	if err != nil {
 		panic(err.Error())
 	}
